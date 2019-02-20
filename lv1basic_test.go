@@ -4,14 +4,23 @@ import (
 	"testing"
 )
 
-const n = 10
+const (
+	n    = 10
+	cn   = 5
+	norm = 19.621416870348583468526003789181774326312834524158
+)
 
-var a = []float32{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
-var b = []float32{10, 9, 8, 7, 6, 5, 4, 3, 2, 1}
-var aa = []float64{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
-var bb = []float64{10, 9, 8, 7, 6, 5, 4, 3, 2, 1}
+var (
+	a  = []float32{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+	b  = []float32{10, 9, 8, 7, 6, 5, 4, 3, 2, 1}
+	aa = []float64{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+	bb = []float64{10, 9, 8, 7, 6, 5, 4, 3, 2, 1}
 
-const anorm = 19.621416870348583468526003789181774326312834524158
+	c  = []complex64{complex(1, 2), complex(3, 4), complex(5, 6), complex(7, 8), complex(9, 10)}
+	d  = []complex64{complex(9, 10), complex(7, 8), complex(5, 6), complex(3, 4), complex(1, 2)}
+	cc = []complex128{complex(1, 2), complex(3, 4), complex(5, 6), complex(7, 8), complex(9, 10)}
+	dd = []complex128{complex(9, 10), complex(7, 8), complex(5, 6), complex(3, 4), complex(1, 2)}
+)
 
 func compareSlices32(a, b []float32) bool {
 	if len(a) != len(b) {
@@ -40,16 +49,31 @@ func compareSlices64(a, b []float64) bool {
 func TestSNRM2(t *testing.T) {
 	nrm := SNRM2(n, a, 1)
 	t.Logf("Norm of %v is %f", a, nrm)
-	if nrm != anorm {
-		t.Errorf("Norm wanted %f, got: %f", anorm, nrm)
+	if nrm != norm {
+		t.Errorf("Norm wanted %.15f, got: %.15f", norm, nrm)
 	}
 }
 
 func TestDNRM2(t *testing.T) {
 	nrm := DNRM2(n, aa, 1)
 	t.Logf("Norm of %v is %f", a, nrm)
-	if nrm != anorm {
-		t.Errorf("Norm wanted %.20f, got: %.20f", anorm, nrm)
+	if nrm != norm {
+		t.Errorf("Norm wanted %.20f, got: %.20f", norm, nrm)
+	}
+}
+
+func TestSCNRM2(t *testing.T) {
+	nrm := SCNRM2(cn, c, 1)
+	t.Logf("Norm of %v is %f.", c, nrm)
+	if nrm != norm {
+		t.Errorf("Norm wanted %.15f, got: %.15f", norm, nrm)
+	}
+}
+func TestDZNRM2(t *testing.T) {
+	nrm := DZNRM2(cn, cc, 1)
+	t.Logf("Norm of %v is %f.", cc, nrm)
+	if nrm != norm {
+		t.Errorf("Norm wanted %.20f, got: %.20f", norm, nrm)
 	}
 }
 
