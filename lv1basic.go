@@ -61,3 +61,13 @@ func SCOPY(N int, X []float32, incX int, Y []float32, incY int) {
 func DCOPY(N int, X []float64, incX int, Y []float64, incY int) {
 	C.cblas_dcopy(C.int(N), (*C.double)(&X[0]), C.int(incX), (*C.double)(&Y[0]), C.int(incY))
 }
+
+//CCOPY copies the Vector X into Y.
+func CCOPY(N int, X []complex64, incX int, Y []complex64, incY int) {
+	C.cblas_ccopy(C.int(N), unsafe.Pointer(&X[0]), C.int(incX), unsafe.Pointer(&Y[0]), C.int(incY))
+}
+
+//ZCOPY copies the Vector X into Y.
+func ZCOPY(N int, X []complex128, incX int, Y []complex128, incY int) {
+	C.cblas_ccopy(C.int(N), unsafe.Pointer(&X[0]), C.int(incX), unsafe.Pointer(&Y[0]), C.int(incY))
+}

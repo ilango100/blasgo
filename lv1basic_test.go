@@ -157,6 +157,22 @@ func TestDCOPY(t *testing.T) {
 	aaa := make([]float64, n)
 	DCOPY(n, aa, 1, aaa, 1)
 	if !compareSlices64(aa, aaa) {
-		t.Errorf("Copied slice not equal to original: %v != %v", aaa, a)
+		t.Errorf("Copied slice not equal to original: %v != %v", aaa, aa)
+	}
+}
+
+func TestCCOPY(t *testing.T) {
+	ccc := make([]complex64, cn)
+	CCOPY(n, c, 1, ccc, 1)
+	if !compareSlicesC64(ccc, c) {
+		t.Errorf("Copied slice not equal to original: %v != %v", ccc, c)
+	}
+}
+
+func TestZCOPY(t *testing.T) {
+	ccc := make([]complex128, cn)
+	ZCOPY(n, cc, 1, ccc, 1)
+	if !compareSlicesC128(ccc, cc) {
+		t.Errorf("Copied slice not equal to original: %v != %v", ccc, cc)
 	}
 }
