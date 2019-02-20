@@ -25,3 +25,13 @@ func SSWAP(N int, X []float32, incX int, Y []float32, incY int) {
 func DSWAP(N int, X []float64, incX int, Y []float64, incY int) {
 	C.cblas_dswap(C.int(N), (*C.double)(&X[0]), C.int(incX), (*C.double)(&Y[0]), C.int(incY))
 }
+
+//SCOPY copies the Vectors
+func SCOPY(N int, X []float32, incX int, Y []float32, incY int) {
+	C.cblas_scopy(C.int(N), (*C.float)(&X[0]), C.int(incX), (*C.float)(&Y[0]), C.int(incY))
+}
+
+//DCOPY copies the Vectors
+func DCOPY(N int, X []float64, incX int, Y []float64, incY int) {
+	C.cblas_dcopy(C.int(N), (*C.double)(&X[0]), C.int(incX), (*C.double)(&Y[0]), C.int(incY))
+}

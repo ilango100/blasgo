@@ -74,3 +74,19 @@ func TestDSWAP(t *testing.T) {
 		t.Errorf("Not swapped correctly, a: %v, b: %v", aaa, bbb)
 	}
 }
+
+func TestSCOPY(t *testing.T) {
+	aaa := make([]float32, n)
+	SCOPY(n, a, 1, aaa, 1)
+	if !compareSlices32(a, aaa) {
+		t.Errorf("Copied slices not equal to original: %v != %v", aaa, a)
+	}
+}
+
+func TestDCOPY(t *testing.T) {
+	aaa := make([]float64, n)
+	DCOPY(n, aa, 1, aaa, 1)
+	if !compareSlices64(aa, aaa) {
+		t.Errorf("Copied slice not equal to original: %v != %v", aaa, a)
+	}
+}
