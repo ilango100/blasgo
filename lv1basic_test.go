@@ -46,6 +46,30 @@ func compareSlices64(a, b []float64) bool {
 	return true
 }
 
+func compareSlicesC64(a, b []complex64) bool {
+	if len(a) != len(b) {
+		return false
+	}
+	for i := range a {
+		if a[i] != b[i] {
+			return false
+		}
+	}
+	return true
+}
+
+func compareSlicesC128(a, b []complex128) bool {
+	if len(a) != len(b) {
+		return false
+	}
+	for i := range a {
+		if a[i] != b[i] {
+			return false
+		}
+	}
+	return true
+}
+
 func TestSNRM2(t *testing.T) {
 	nrm := SNRM2(n, a, 1)
 	t.Logf("Norm of %v is %f", a, nrm)
@@ -96,6 +120,28 @@ func TestDSWAP(t *testing.T) {
 	DSWAP(n, aaa, 1, bbb, 1)
 	if !compareSlices64(aaa, bb) || !compareSlices64(bbb, aa) {
 		t.Errorf("Not swapped correctly, a: %v, b: %v", aaa, bbb)
+	}
+}
+
+func TestCSWAP(t *testing.T) {
+	ccc := make([]complex64, cn)
+	copy(ccc, c)
+	ddd := make([]complex64, cn)
+	copy(ddd, d)
+	CSWAP(cn, ccc, 1, ddd, 1)
+	if !compareSlicesC64(ccc, d) || !compareSlicesC64(ddd, c) {
+		t.Errorf("Not swapped correctly, a: %v, b: %v", ccc, ddd)
+	}
+}
+
+func TestZSWAP(t *testing.T) {
+	ccc := make([]complex128, cn)
+	copy(ccc, cc)
+	ddd := make([]complex128, cn)
+	copy(ddd, dd)
+	ZSWAP(cn, ccc, 1, ddd, 1)
+	if !compareSlicesC128(ccc, dd) || !compareSlicesC128(ddd, cc) {
+		t.Errorf("Not swapped correctly, a: %v, b: %v", ccc, ddd)
 	}
 }
 

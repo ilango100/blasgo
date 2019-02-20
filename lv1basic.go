@@ -42,6 +42,16 @@ func DSWAP(N int, X []float64, incX int, Y []float64, incY int) {
 	C.cblas_dswap(C.int(N), (*C.double)(&X[0]), C.int(incX), (*C.double)(&Y[0]), C.int(incY))
 }
 
+//CSWAP swaps the Vectors.
+func CSWAP(N int, X []complex64, incX int, Y []complex64, incY int) {
+	C.cblas_cswap(C.int(N), unsafe.Pointer(&X[0]), C.int(incX), unsafe.Pointer(&Y[0]), C.int(incY))
+}
+
+//ZSWAP swaps the Vectors.
+func ZSWAP(N int, X []complex128, incX int, Y []complex128, incY int) {
+	C.cblas_zswap(C.int(N), unsafe.Pointer(&X[0]), C.int(incX), unsafe.Pointer(&Y[0]), C.int(incY))
+}
+
 //SCOPY copies the Vector X into Y.
 func SCOPY(N int, X []float32, incX int, Y []float32, incY int) {
 	C.cblas_scopy(C.int(N), (*C.float)(&X[0]), C.int(incX), (*C.float)(&Y[0]), C.int(incY))
