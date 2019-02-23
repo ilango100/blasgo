@@ -16,8 +16,8 @@ This package should be able to link against any [CBLAS](http://www.netlib.org/bl
 
 |Library|Build Tag|Linux|Windows|
 |-|-|-|-|
-|OpenBLAS (Default)| none (used by default) | <ul><li>[x]</li></ul> | <ul><li>[x]</li></ul> |
-|Intel MKL| mkl | <ul><li>[x]</li></ul> | <ul><li>[x]</li></ul> |
+|OpenBLAS (Default)| none (used by default) | &#9745; | &#9745; |
+|Intel MKL| mkl | &#9745; | &#9745; |
 |BLAS Reference| ref | **Planned** | **Planned** |
 |NVIDIA cuBLAS | cublas | **Planned** | **Planned** |
 
