@@ -70,6 +70,58 @@ func compareSlicesC128(a, b []complex128) bool {
 	return true
 }
 
+func TestISAMAX(t *testing.T) {
+	max := ISAMAX(n, a, 1)
+	if max != len(a)-1 {
+		t.Errorf("Expected max index of %v to be %d, got %d", a, len(a)-1, max)
+	}
+	t.Logf("Max index of %v is %d", a, max)
+	max = ISAMAX(n, b, 1)
+	if max != 0 {
+		t.Errorf("Expected max index of %v to be %d, got %d", b, 0, max)
+	}
+	t.Logf("Max index of %v is %d", b, max)
+}
+
+func TestIDAMAX(t *testing.T) {
+	max := IDAMAX(n, aa, 1)
+	if max != len(a)-1 {
+		t.Errorf("Expected max index of %v to be %d, got %d", aa, len(a)-1, max)
+	}
+	t.Logf("Max index of %v is %d", aa, max)
+	max = IDAMAX(n, bb, 1)
+	if max != 0 {
+		t.Errorf("Expected max index of %v to be %d, got %d", bb, 0, max)
+	}
+	t.Logf("Max index of %v is %d", bb, max)
+}
+
+func TestICAMAX(t *testing.T) {
+	max := ICAMAX(cn, c, 1)
+	if max != len(c)-1 {
+		t.Errorf("Expected max index of %v to be %d, got %d", c, len(c)-1, max)
+	}
+	t.Logf("Max index of %v is %d", c, max)
+	max = ICAMAX(cn, d, 1)
+	if max != 0 {
+		t.Errorf("Expected max index of %v to be %d, got %d", d, 0, max)
+	}
+	t.Logf("Max index of %v is %d", d, max)
+}
+
+func TestIZAMAX(t *testing.T) {
+	max := IZAMAX(cn, cc, 1)
+	if max != len(cc)-1 {
+		t.Errorf("Expected max index of %v to be %d, got %d", cc, len(cc)-1, max)
+	}
+	t.Logf("Max index of %v is %d", cc, max)
+	max = IZAMAX(cn, dd, 1)
+	if max != 0 {
+		t.Errorf("Expected max index of %v to be %d, got %d", dd, 0, max)
+	}
+	t.Logf("Max index of %v is %d", dd, max)
+}
+
 func TestSNRM2(t *testing.T) {
 	nrm := SNRM2(n, a, 1)
 	t.Logf("Norm of %v is %f", a, nrm)
