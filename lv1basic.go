@@ -9,22 +9,22 @@ import (
 	"unsafe"
 )
 
-//ISAMAX returns the max value from the vector.
+//ISAMAX returns the max value from the vector. Return type is int, so that it can be used directly as index of slice.
 func ISAMAX(N int, X []float32, incX int) int {
 	return int(C.cblas_isamax(C.int(N), (*C.float)(&X[0]), C.int(incX)))
 }
 
-//IDAMAX returns the max value from the vector.
+//IDAMAX returns the max value from the vector. Return type is int, so that it can be used directly as index of slice.
 func IDAMAX(N int, X []float64, incX int) int {
 	return int(C.cblas_idamax(C.int(N), (*C.double)(&X[0]), C.int(incX)))
 }
 
-//ICAMAX returns the max value from the vector.
+//ICAMAX returns the max value from the vector. Return type is int, so that it can be used directly as index of slice.
 func ICAMAX(N int, X []complex64, incX int) int {
 	return int(C.cblas_icamax(C.int(N), unsafe.Pointer(&X[0]), C.int(incX)))
 }
 
-//IZAMAX returns the max value from the vector.
+//IZAMAX returns the max value from the vector. Return type is int, so that it can be used directly as index of slice.
 func IZAMAX(N int, X []complex128, incX int) int {
 	return int(C.cblas_izamax(C.int(N), unsafe.Pointer(&X[0]), C.int(incX)))
 }
