@@ -1,3 +1,5 @@
+// +build !mkl
+
 package blasgo
 
 /*
