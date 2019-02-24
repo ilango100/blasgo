@@ -228,3 +228,55 @@ func TestZCOPY(t *testing.T) {
 		t.Errorf("Copied slice not equal to original: %v != %v", ccc, cc)
 	}
 }
+
+func TestSASUM(t *testing.T) {
+	sum := SASUM(n, a, 1)
+	if sum != 55 {
+		t.Errorf("Sum of %v expected %f, got %f", a, 55.0, sum)
+	}
+	t.Logf("Sum of %v is %f", a, sum)
+	sum = SASUM(n, b, 1)
+	if sum != 55 {
+		t.Errorf("Sum of %v expected %f, got %f", b, 55.0, sum)
+	}
+	t.Logf("Sum of %v is %f", b, sum)
+}
+
+func TestDASUM(t *testing.T) {
+	sum := DASUM(n, aa, 1)
+	if sum != 55 {
+		t.Errorf("Sum of %v expected %f, got %f", aa, 55.0, sum)
+	}
+	t.Logf("Sum of %v is %f", aa, sum)
+	sum = DASUM(n, bb, 1)
+	if sum != 55 {
+		t.Errorf("Sum of %v expected %f, got %f", bb, 55.0, sum)
+	}
+	t.Logf("Sum of %v is %f", bb, sum)
+}
+
+func TestSCASUM(t *testing.T) {
+	sum := SCASUM(cn, c, 1)
+	if sum != 55 {
+		t.Errorf("Sum of %v expected %f, got %f", c, 55.0, sum)
+	}
+	t.Logf("Sum of %v is %f", c, sum)
+	sum = SCASUM(cn, d, 1)
+	if sum != 55 {
+		t.Errorf("Sum of %v expected %f, got %f", d, 55.0, sum)
+	}
+	t.Logf("Sum of %v is %f", d, sum)
+}
+
+func TestDZASUM(t *testing.T) {
+	sum := DZASUM(cn, cc, 1)
+	if sum != 55 {
+		t.Errorf("Sum of %v expected %f, got %f", cc, 55.0, sum)
+	}
+	t.Logf("Sum of %v is %f", cc, sum)
+	sum = DZASUM(cn, dd, 1)
+	if sum != 55 {
+		t.Errorf("Sum of %v expected %f, got %f", dd, 55.0, sum)
+	}
+	t.Logf("Sum of %v is %f", dd, sum)
+}

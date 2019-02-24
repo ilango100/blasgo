@@ -88,3 +88,23 @@ func CCOPY(N int, X []complex64, incX int, Y []complex64, incY int) {
 func ZCOPY(N int, X []complex128, incX int, Y []complex128, incY int) {
 	C.cblas_ccopy(C.int(N), unsafe.Pointer(&X[0]), C.int(incX), unsafe.Pointer(&Y[0]), C.int(incY))
 }
+
+//SASUM calculates the sum of vector.
+func SASUM(N int, X []float32, incX int) float32 {
+	return float32(C.cblas_sasum(C.int(N), (*C.float)(&X[0]), C.int(incX)))
+}
+
+//DASUM calculates the sum of vector.
+func DASUM(N int, X []float64, incX int) float64 {
+	return float64(C.cblas_dasum(C.int(N), (*C.double)(&X[0]), C.int(incX)))
+}
+
+//SCASUM calculates the sum of vector.
+func SCASUM(N int, X []complex64, incX int) float32 {
+	return float32(C.cblas_scasum(C.int(N), unsafe.Pointer(&X[0]), C.int(incX)))
+}
+
+//DZASUM calculates the sum of vector.
+func DZASUM(N int, X []complex128, incX int) float64 {
+	return float64(C.cblas_dzasum(C.int(N), unsafe.Pointer(&X[0]), C.int(incX)))
+}
