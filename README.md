@@ -12,16 +12,16 @@ This is a **Work in Progress**.
 
 ## CBLAS libraries
 
-This package should be able to link against any [CBLAS](http://www.netlib.org/blas/#_cblas) implementation. The cgo build flags has to be set accordingly. Most of the libraries can be linked using a go build tag.
+This package should be able to link against any [CBLAS](http://www.netlib.org/blas/#_cblas) implementation. The cgo build flags has to be set accordingly. 
 
 Currently, the following libraries are tested:
 
-|Library|Build Tag|Linux|Windows|
-|-|-|-|-|
-|OpenBLAS (Default)| none (used by default) | &#9745; | &#9745; |
-|Intel MKL| mkl | &#9745; | &#9745; |
-|BLAS Reference| ref | **Planned** | **Planned** |
-|NVIDIA cuBLAS | cublas | **Planned** | **Planned** |
+|Library|Linux|Windows|
+|-|-|-|
+|BLAS Reference| &#9745; | &#9745; |
+|OpenBLAS | &#9745; | &#9745; |
+|Intel MKL | &#9745; | &#9745; |
+|NVIDIA cuBLAS | **Planned** | **Planned** |
 
 List of implementations: [Wiki](https://en.wikipedia.org/wiki/Basic_Linear_Algebra_Subprograms#Implementations)
 
