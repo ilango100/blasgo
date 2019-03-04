@@ -103,3 +103,36 @@ func TestZDSCAL(t *testing.T) {
 	}
 	t.Logf("Scaling with %v, got %v", alpha, s)
 }
+
+func TestSDOT(t *testing.T) {
+	dt := SDOT(n, a, 1, b, 1)
+	if dt != abdt {
+		t.Errorf("Expected dot product %f, got %f", abdt, dt)
+	}
+	t.Logf("Dot product of %v and %v is %f", a, b, dt)
+}
+
+func TestDDOT(t *testing.T) {
+	dt := DDOT(n, aa, 1, bb, 1)
+	if dt != abdt {
+		t.Errorf("Expected dot product %f, got %f", abdt, dt)
+	}
+	t.Logf("Dot product of %v and %v is %f", a, b, dt)
+}
+
+func TestDSDOT(t *testing.T) {
+	dt := DSDOT(n, a, 1, b, 1)
+	if dt != abdt {
+		t.Errorf("Expected dot product %f, got %f", abdt, dt)
+	}
+	t.Logf("Dot product of %v and %v is %f", a, b, dt)
+}
+
+func TestSDSDOT(t *testing.T) {
+	alpha := float32(5.0)
+	dt := SDSDOT(n, alpha, a, 1, b, 1)
+	if dt != abdt+alpha {
+		t.Errorf("Expected dot product %f, got %f", abdt, dt)
+	}
+	t.Logf("Dot product of %v and %v + %f is %f", a, b, alpha, dt)
+}

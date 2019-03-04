@@ -38,3 +38,23 @@ func CSSCAL(N int, alpha float32, X []complex64, incX int) {
 func ZDSCAL(N int, alpha float64, X []complex128, incX int) {
 	C.cblas_zdscal(C.int(N), C.double(alpha), unsafe.Pointer(&X[0]), C.int(incX))
 }
+
+//SDOT performs dot product of X and Y.
+func SDOT(N int, X []float32, incX int, Y []float32, incY int) float32 {
+	return float32(C.cblas_sdot(C.int(N), (*C.float)(&X[0]), C.int(incX), (*C.float)(&Y[0]), C.int(incY)))
+}
+
+//DDOT performs dot product of X and Y.
+func DDOT(N int, X []float64, incX int, Y []float64, incY int) float64 {
+	return float64(C.cblas_ddot(C.int(N), (*C.double)(&X[0]), C.int(incX), (*C.double)(&Y[0]), C.int(incY)))
+}
+
+//DSDOT performs dot product of X and Y.
+func DSDOT(N int, X []float32, incX int, Y []float32, incY int) float64 {
+	return float64(C.cblas_dsdot(C.int(N), (*C.float)(&X[0]), C.int(incX), (*C.float)(&Y[0]), C.int(incY)))
+}
+
+//SDSDOT performs dot product of X and Y.
+func SDSDOT(N int, alpha float32, X []float32, incX int, Y []float32, incY int) float32 {
+	return float32(C.cblas_sdsdot(C.int(N), C.float(alpha), (*C.float)(&X[0]), C.int(incX), (*C.float)(&Y[0]), C.int(incY)))
+}
