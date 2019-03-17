@@ -82,3 +82,23 @@ func ZDOTC(N int, X []complex128, incX int, Y []complex128, incY int) (c complex
 	C.cblas_zdotc_sub(C.int(N), unsafe.Pointer(&X[0]), C.int(incX), unsafe.Pointer(&Y[0]), C.int(incY), unsafe.Pointer(&c))
 	return c
 }
+
+//SAXPY => Y = A*X + Y
+func SAXPY(N int, alpha float32, X []float32, incX int, Y []float32, incY int) {
+	C.cblas_saxpy(C.int(N), C.float(alpha), (*C.float)(&X[0]), C.int(incX), (*C.float)(&Y[0]), C.int(incY))
+}
+
+//DAXPY => Y = A*X + Y
+func DAXPY(N int, alpha float64, X []float64, incX int, Y []float64, incY int) {
+	C.cblas_daxpy(C.int(N), C.double(alpha), (*C.double)(&X[0]), C.int(incX), (*C.double)(&Y[0]), C.int(incY))
+}
+
+//CAXPY => Y = A*X + Y
+func CAXPY(N int, alpha complex64, X []complex64, incX int, Y []complex64, incY int) {
+	C.cblas_caxpy(C.int(N), unsafe.Pointer(&alpha), unsafe.Pointer(&X[0]), C.int(incX), unsafe.Pointer(&Y[0]), C.int(incY))
+}
+
+//ZAXPY => Y = A*X + Y
+func ZAXPY(N int, alpha complex128, X []complex128, incX int, Y []complex128, incY int) {
+	C.cblas_zaxpy(C.int(N), unsafe.Pointer(&alpha), unsafe.Pointer(&X[0]), C.int(incX), unsafe.Pointer(&Y[0]), C.int(incY))
+}

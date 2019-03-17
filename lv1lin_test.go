@@ -3,7 +3,7 @@ package blasgo
 import "testing"
 
 func TestSSCAL(t *testing.T) {
-	s := make([]float32, len(aa))
+	s := make([]float32, len(a))
 	copy(s, a)
 	alpha := float32(2.5)
 	sc := make([]float32, len(s))
@@ -167,4 +167,84 @@ func TestZDOTC(t *testing.T) {
 		t.Errorf("")
 	}
 	t.Logf("Dot product of %v and conj of %v is %v", cc, dd, dt)
+}
+
+func TestSAXPY(t *testing.T) {
+	r := make([]float32, len(a))
+	copy(r, a)
+	s := make([]float32, len(a))
+	copy(s, b)
+	alpha := float32(2.5)
+
+	sc := make([]float32, len(s))
+	for i := range s {
+		sc[i] = alpha*r[i] + s[i]
+	}
+
+	SAXPY(n, alpha, r, 1, s, 1)
+
+	if !compareSlices32(s, sc) {
+		t.Errorf("%f * %v + %v, expected %v, got %v", alpha, a, b, sc, s)
+	}
+	t.Logf("%f * %v + %v, got %v", alpha, a, b, s)
+}
+
+func TestDAXPY(t *testing.T) {
+	r := make([]float64, len(aa))
+	copy(r, aa)
+	s := make([]float64, len(aa))
+	copy(s, bb)
+	alpha := float64(2.5)
+
+	sc := make([]float64, len(s))
+	for i := range s {
+		sc[i] = alpha*r[i] + s[i]
+	}
+
+	DAXPY(n, alpha, r, 1, s, 1)
+
+	if !compareSlices64(s, sc) {
+		t.Errorf("%f * %v + %v, expected %v, got %v", alpha, a, b, sc, s)
+	}
+	t.Logf("%f * %v + %v, got %v", alpha, a, b, s)
+}
+
+func TestCAXPY(t *testing.T) {
+	r := make([]complex64, len(c))
+	copy(r, c)
+	s := make([]complex64, len(d))
+	copy(s, d)
+	alpha := complex64(complex(2.5, 1.5))
+
+	sc := make([]complex64, len(s))
+	for i := range s {
+		sc[i] = alpha*r[i] + s[i]
+	}
+
+	CAXPY(cn, alpha, r, 1, s, 1)
+
+	if !compareSlicesC64(s, sc) {
+		t.Errorf("%f * %v + %v, expected %v, got %v", alpha, c, d, sc, s)
+	}
+	t.Logf("%f * %v + %v, got %v", alpha, c, d, s)
+}
+
+func TestZAXPY(t *testing.T) {
+	r := make([]complex128, len(cc))
+	copy(r, cc)
+	s := make([]complex128, len(dd))
+	copy(s, dd)
+	alpha := complex128(complex(2.5, 1.5))
+
+	sc := make([]complex128, len(s))
+	for i := range s {
+		sc[i] = alpha*r[i] + s[i]
+	}
+
+	ZAXPY(cn, alpha, r, 1, s, 1)
+
+	if !compareSlicesC128(s, sc) {
+		t.Errorf("%f * %v + %v, expected %v, got %v", alpha, cc, dd, sc, s)
+	}
+	t.Logf("%f * %v + %v, got %v", alpha, cc, dd, s)
 }
