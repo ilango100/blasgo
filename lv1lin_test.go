@@ -136,3 +136,35 @@ func TestSDSDOT(t *testing.T) {
 	}
 	t.Logf("Dot product of %v and %v + %f is %f", a, b, alpha, dt)
 }
+
+func TestCDOTU(t *testing.T) {
+	dt := CDOTU(cn, c, 1, d, 1)
+	if dt != cddt {
+		t.Errorf("")
+	}
+	t.Logf("Dot product of %v and %v is %v", c, d, dt)
+}
+
+func TestCDOTC(t *testing.T) {
+	dt := CDOTC(cn, c, 1, d, 1)
+	if dt != cddtc {
+		t.Errorf("")
+	}
+	t.Logf("Dot product of %v and conj of %v is %v", c, d, dt)
+}
+
+func TestZDOTU(t *testing.T) {
+	dt := ZDOTU(cn, cc, 1, dd, 1)
+	if dt != cddt {
+		t.Errorf("")
+	}
+	t.Logf("Dot product of %v and %v is %v", cc, dd, dt)
+}
+
+func TestZDOTC(t *testing.T) {
+	dt := ZDOTC(cn, cc, 1, dd, 1)
+	if dt != cddtc {
+		t.Errorf("")
+	}
+	t.Logf("Dot product of %v and conj of %v is %v", cc, dd, dt)
+}

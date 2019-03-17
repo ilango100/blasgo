@@ -58,3 +58,27 @@ func DSDOT(N int, X []float32, incX int, Y []float32, incY int) float64 {
 func SDSDOT(N int, alpha float32, X []float32, incX int, Y []float32, incY int) float32 {
 	return float32(C.cblas_sdsdot(C.int(N), C.float(alpha), (*C.float)(&X[0]), C.int(incX), (*C.float)(&Y[0]), C.int(incY)))
 }
+
+//CDOTU performs dot product of X and Y.
+func CDOTU(N int, X []complex64, incX int, Y []complex64, incY int) (c complex64) {
+	C.cblas_cdotu_sub(C.int(N), unsafe.Pointer(&X[0]), C.int(incX), unsafe.Pointer(&Y[0]), C.int(incY), unsafe.Pointer(&c))
+	return c
+}
+
+//CDOTC performs dot product of X and congugate Y.
+func CDOTC(N int, X []complex64, incX int, Y []complex64, incY int) (c complex64) {
+	C.cblas_cdotc_sub(C.int(N), unsafe.Pointer(&X[0]), C.int(incX), unsafe.Pointer(&Y[0]), C.int(incY), unsafe.Pointer(&c))
+	return c
+}
+
+//ZDOTU performs dot product of X and Y.
+func ZDOTU(N int, X []complex128, incX int, Y []complex128, incY int) (c complex128) {
+	C.cblas_zdotu_sub(C.int(N), unsafe.Pointer(&X[0]), C.int(incX), unsafe.Pointer(&Y[0]), C.int(incY), unsafe.Pointer(&c))
+	return c
+}
+
+//ZDOTC performs dot product of X and Y.
+func ZDOTC(N int, X []complex128, incX int, Y []complex128, incY int) (c complex128) {
+	C.cblas_zdotc_sub(C.int(N), unsafe.Pointer(&X[0]), C.int(incX), unsafe.Pointer(&Y[0]), C.int(incY), unsafe.Pointer(&c))
+	return c
+}
