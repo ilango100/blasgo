@@ -25,54 +25,6 @@ var (
 	dd = []complex128{complex(9, 10), complex(7, 8), complex(5, 6), complex(3, 4), complex(1, 2)}
 )
 
-func compareSlices32(a, b []float32) bool {
-	if len(a) != len(b) {
-		return false
-	}
-	for i := range a {
-		if a[i] != b[i] {
-			return false
-		}
-	}
-	return true
-}
-
-func compareSlices64(a, b []float64) bool {
-	if len(a) != len(b) {
-		return false
-	}
-	for i := range a {
-		if a[i] != b[i] {
-			return false
-		}
-	}
-	return true
-}
-
-func compareSlicesC64(a, b []complex64) bool {
-	if len(a) != len(b) {
-		return false
-	}
-	for i := range a {
-		if a[i] != b[i] {
-			return false
-		}
-	}
-	return true
-}
-
-func compareSlicesC128(a, b []complex128) bool {
-	if len(a) != len(b) {
-		return false
-	}
-	for i := range a {
-		if a[i] != b[i] {
-			return false
-		}
-	}
-	return true
-}
-
 func TestISAMAX(t *testing.T) {
 	max := ISAMAX(n, a, 1)
 	if max != len(a)-1 {
