@@ -19,10 +19,18 @@ For windows, make sure these are followed:
 ### [Reference implementation](http://www.netlib.org/blas/)
 To link against reference implementation, both BLAS and CBLAS libraries are required.
 
-export CGO_LDFLAGS="-L../CBLAS/lib -L../BLAS-3.8.0 -l:cblas_LINUX.a -l:blas_LINUX.a"
+`export CGO_LDFLAGS="-L../CBLAS/lib -L../BLAS-3.8.0 -l:cblas_LINUX.a -l:blas_LINUX.a"`
 
 ### [OpenBLAS](https://github.com/xianyi/OpenBLAS)
-export CGO_LDFLAGS="-L/opt/OpenBLAS/lib -lopenblas [-static]"
+`export CGO_LDFLAGS="-L/opt/OpenBLAS/lib -lopenblas [-static]"`
 
 ### [Intel MKL](https://software.intel.com/en-us/mkl)
-export CGO_LDFLAGS="-L $HOME/intel/mkl/lib/intel64 -lmkl_rt"  #Dynamic  linking
+#### Linux
+`export CGO_LDFLAGS="-L $HOME/intel/mkl/lib/intel64 -lmkl_rt"  #Dynamic  linking`
+
+#### Windows (PowerShell)
+```
+$env:CGO_LDFLAGS="-L C:\path\to\mkl -lmkl_rt"
+$env:Path="C:\path\to\mkl\compiler_and_libraries\windows\redist\intel64\mkl;C:\path\to\mkl\compiler_and_libraries\windows\redist\intel64\compiler;$env:Path" 
+```
+**Note**: The -L flag should specify the path where .lib files are located. Not where .dll files are located. Currently, static builds cannot be done in Windows due to lib files being import libraries. [Learn more](https://stackoverflow.com/a/43347809/3055011)
