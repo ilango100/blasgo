@@ -73,3 +73,21 @@ void blasgo_zcopy(const int N, const void *X, const int incX, void *Y, const int
 {
     return zcopy_(&N, X, &incX, Y, &incY);
 }
+
+//Sum functions
+float blasgo_sasum(const int N, const float *X, const int incX)
+{
+    return sasum_(&N, X, &incX);
+}
+double blasgo_dasum(const int N, const double *X, const int incX)
+{
+    return dasum_(&N, X, &incX);
+}
+float blasgo_scasum(const int N, const void *X, const int incX)
+{
+    return scasum_(&N, X, &incX);
+}
+double blasgo_dzasum(const int N, const void *X, const int incX)
+{
+    return dzasum_(&N, X, &incX);
+}

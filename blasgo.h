@@ -26,4 +26,10 @@ void blasgo_dcopy(const int N, const double *X, const int incX, double *Y, const
 void blasgo_ccopy(const int N, const void *X, const int incX, void *Y, const int incY);
 void blasgo_zcopy(const int N, const void *X, const int incX, void *Y, const int incY);
 
+//Sum functions
+float blasgo_sasum(const int N, const float *X, const int incX);
+double blasgo_dasum(const int N, const double *X, const int incX);
+float blasgo_scasum(const int N, const void *X, const int incX);
+double blasgo_dzasum(const int N, const void *X, const int incX);
+
 #endif

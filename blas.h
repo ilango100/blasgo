@@ -26,4 +26,10 @@ void dcopy_(const int *N, const double *X, const int *incX, double *Y, const int
 void ccopy_(const int *N, const void *X, const int *incX, void *Y, const int *incY);
 void zcopy_(const int *N, const void *X, const int *incX, void *Y, const int *incY);
 
+//Sum functions
+float sasum_(const int *N, const float *X, const int *incX);
+double dasum_(const int *N, const double *X, const int *incX);
+float scasum_(const int *N, const void *X, const int *incX);
+double dzasum_(const int *N, const void *X, const int *incX);
+
 #endif
