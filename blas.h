@@ -40,4 +40,20 @@ void zscal_(const int *N, const void *alpha, void *X, const int *incX);
 void csscal_(const int *N, const float *alpha, void *X, const int *incX);
 void zdscal_(const int *N, const double *alpha, void *X, const int *incX);
 
+//Dot functions
+float sdot_(const int *N, const float *X, const int *incX, const float *Y, const int *incY);
+double ddot_(const int *N, const double *X, const int *incX, const double *Y, const int *incY);
+double dsdot_(const int *N, const float *X, const int *incX, const float *Y, const int *incY);
+float sdsdot_(const int *N, const float *alpha, const float *X, const int *incX, const float *Y, const int *incY);
+void *cdotu_(const int *N, const void *X, const int *incX, const void *Y, const int *incY);
+void *cdotc_(const int *N, const void *X, const int *incX, const void *Y, const int *incY);
+void *zdotu_(const int *N, const void *X, const int *incX, const void *Y, const int *incY);
+void *zdotc_(const int *N, const void *X, const int *incX, const void *Y, const int *incY);
+
+//Axpy functions
+void saxpy_(const int *N, const float *alpha, const float *X, const int *incX, float *Y, const int *incY);
+void daxpy_(const int *N, const double *alpha, const double *X, const int *incX, double *Y, const int *incY);
+void caxpy_(const int *N, const void *alpha, const void *X, const int *incX, void *Y, const int *incY);
+void zaxpy_(const int *N, const void *alpha, const void *X, const int *incX, void *Y, const int *incY);
+
 #endif

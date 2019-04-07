@@ -224,3 +224,107 @@ void blasgo_zdscal(const int N, const double alpha, void *X, const int incX)
     return cblas_zdscal(N, alpha, X, incX);
 #endif
 }
+
+//Dot functions
+float blasgo_sdot(const int N, const float *X, const int incX, const float *Y, const int incY)
+{
+#ifdef BLAS
+    return sdot_(&N, X, &incX, Y, &incY);
+#else
+    return cblas_sdot(N, X, incX, Y, incY);
+#endif
+}
+double blasgo_ddot(const int N, const double *X, const int incX, const double *Y, const int incY)
+{
+#ifdef BLAS
+    return ddot_(&N, X, &incX, Y, &incY);
+#else
+    return cblas_ddot(N, X, incX, Y, incY);
+#endif
+}
+double blasgo_dsdot(const int N, const float *X, const int incX, const float *Y, const int incY)
+{
+#ifdef BLAS
+    return dsdot_(&N, X, &incX, Y, &incY);
+#else
+    return cblas_dsdot(N, X, incX, Y, incY);
+#endif
+}
+float blasgo_sdsdot(const int N, const float alpha, const float *X, const int incX, const float *Y, const int incY)
+{
+#ifdef BLAS
+    return sdsdot_(&N, &alpha, X, &incX, Y, &incY);
+#else
+    return cblas_sdsdot(N, alpha, X, incX, Y, incY);
+#endif
+}
+void blasgo_cdotu_sub(const int N, const void *X, const int incX, const void *Y, const int incY, void *dotu)
+{
+#ifdef BLAS
+    dotu = cdotu_(&N, X, &incX, Y, &incY);
+    return;
+#else
+    return cblas_cdotu_sub(N, X, incX, Y, incY, dotu);
+#endif
+}
+void blasgo_cdotc_sub(const int N, const void *X, const int incX, const void *Y, const int incY, void *dotc)
+{
+#ifdef BLAS
+    dotc = cdotc_(&N, X, &incX, Y, &incY);
+    return;
+#else
+    return cblas_cdotc_sub(N, X, incX, Y, incY, dotc);
+#endif
+}
+void blasgo_zdotu_sub(const int N, const void *X, const int incX, const void *Y, const int incY, void *dotu)
+{
+#ifdef BLAS
+    dotu = zdotu_(&N, X, &incX, Y, &incY);
+    return;
+#else
+    return cblas_zdotu_sub(N, X, incX, Y, incY, dotu);
+#endif
+}
+void blasgo_zdotc_sub(const int N, const void *X, const int incX, const void *Y, const int incY, void *dotc)
+{
+#ifdef BLAS
+    dotc = zdotc_(&N, X, &incX, Y, &incY);
+    return;
+#else
+    return cblas_zdotc_sub(N, X, incX, Y, incY, dotc);
+#endif
+}
+
+//Axpy functions
+void blasgo_saxpy(const int N, const float alpha, const float *X, const int incX, float *Y, const int incY)
+{
+#ifdef BLAS
+    return saxpy_(&N, &alpha, X, &incX, Y, &incY);
+#else
+    return cblas_saxpy(N, alpha, X, incX, Y, incY);
+#endif
+}
+void blasgo_daxpy(const int N, const double alpha, const double *X, const int incX, double *Y, const int incY)
+{
+#ifdef BLAS
+    return daxpy_(&N, &alpha, X, &incX, Y, &incY);
+#else
+    return cblas_daxpy(N, alpha, X, incX, Y, incY);
+#endif
+}
+void blasgo_caxpy(const int N, const void *alpha, const void *X, const int incX, void *Y, const int incY)
+{
+#ifdef BLAS
+    return caxpy_(&N, &alpha, X, &incX, Y, &incY);
+#else
+    return cblas_caxpy(N, alpha, X, incX, Y, incY);
+#endif
+}
+void blasgo_zaxpy(const int N, const void *alpha, const void *X, const int incX, void *Y, const int incY)
+{
+#ifdef BLAS
+    return zaxpy_(&N, &alpha, X, &incX, Y, &incY);
+#else
+    return cblas_zaxpy(N, alpha, X, incX, Y, incY);
+#endif
+}

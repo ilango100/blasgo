@@ -40,4 +40,20 @@ void blasgo_zscal(const int N, const void *alpha, void *X, const int incX);
 void blasgo_csscal(const int N, const float alpha, void *X, const int incX);
 void blasgo_zdscal(const int N, const double alpha, void *X, const int incX);
 
+//Dot functions
+float blasgo_sdot(const int N, const float *X, const int incX, const float *Y, const int incY);
+double blasgo_ddot(const int N, const double *X, const int incX, const double *Y, const int incY);
+double blasgo_dsdot(const int N, const float *X, const int incX, const float *Y, const int incY);
+float blasgo_sdsdot(const int N, const float alpha, const float *X, const int incX, const float *Y, const int incY);
+void blasgo_cdotu_sub(const int N, const void *X, const int incX, const void *Y, const int incY, void *dotu);
+void blasgo_cdotc_sub(const int N, const void *X, const int incX, const void *Y, const int incY, void *dotc);
+void blasgo_zdotu_sub(const int N, const void *X, const int incX, const void *Y, const int incY, void *dotu);
+void blasgo_zdotc_sub(const int N, const void *X, const int incX, const void *Y, const int incY, void *dotc);
+
+//Axpy functions
+void blasgo_saxpy(const int N, const float alpha, const float *X, const int incX, float *Y, const int incY);
+void blasgo_daxpy(const int N, const double alpha, const double *X, const int incX, double *Y, const int incY);
+void blasgo_caxpy(const int N, const void *alpha, const void *X, const int incX, void *Y, const int incY);
+void blasgo_zaxpy(const int N, const void *alpha, const void *X, const int incX, void *Y, const int incY);
+
 #endif
