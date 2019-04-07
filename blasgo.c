@@ -37,3 +37,39 @@ double blasgo_dznrm2(const int N, const void *X, const int incX)
 {
     return dznrm2_(&N, X, &incX);
 }
+
+//Swap functions
+void blasgo_sswap(const int N, float *X, const int incX, float *Y, const int incY)
+{
+    return sswap_(&N, X, &incX, Y, &incY);
+}
+void blasgo_dswap(const int N, double *X, const int incX, double *Y, const int incY)
+{
+    return dswap_(&N, X, &incX, Y, &incY);
+}
+void blasgo_cswap(const int N, void *X, const int incX, void *Y, const int incY)
+{
+    return cswap_(&N, X, &incX, Y, &incY);
+}
+void blasgo_zswap(const int N, void *X, const int incX, void *Y, const int incY)
+{
+    return zswap_(&N, X, &incX, Y, &incY);
+}
+
+//Copy functions
+void blasgo_scopy(const int N, const float *X, const int incX, float *Y, const int incY)
+{
+    return scopy_(&N, X, &incX, Y, &incY);
+}
+void blasgo_dcopy(const int N, const double *X, const int incX, double *Y, const int incY)
+{
+    return dcopy_(&N, X, &incX, Y, &incY);
+}
+void blasgo_ccopy(const int N, const void *X, const int incX, void *Y, const int incY)
+{
+    return ccopy_(&N, X, &incX, Y, &incY);
+}
+void blasgo_zcopy(const int N, const void *X, const int incX, void *Y, const int incY)
+{
+    return zcopy_(&N, X, &incX, Y, &incY);
+}
