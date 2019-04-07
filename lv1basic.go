@@ -32,22 +32,22 @@ func IZAMAX(N int, X []complex128, incX int) int {
 
 //SNRM2 calculates Euclidean norm of the vector.
 func SNRM2(N int, X []float32, incX int) float32 {
-	return float32(C.cblas_snrm2(C.int(N), (*C.float)(&X[0]), C.int(incX)))
+	return float32(C.blasgo_snrm2(C.int(N), (*C.float)(&X[0]), C.int(incX)))
 }
 
 //DNRM2 calculates Euclidean norm of the vector.
 func DNRM2(N int, X []float64, incX int) float64 {
-	return float64(C.cblas_dnrm2(C.int(N), (*C.double)(&X[0]), C.int(incX)))
+	return float64(C.blasgo_dnrm2(C.int(N), (*C.double)(&X[0]), C.int(incX)))
 }
 
 //SCNRM2 calculates Euclidean norm of the vector.
 func SCNRM2(N int, X []complex64, incX int) float32 {
-	return float32(C.cblas_scnrm2(C.int(N), unsafe.Pointer(&X[0]), C.int(incX)))
+	return float32(C.blasgo_scnrm2(C.int(N), unsafe.Pointer(&X[0]), C.int(incX)))
 }
 
 //DZNRM2 calculates Euclidean norm of the vector.
 func DZNRM2(N int, X []complex128, incX int) float64 {
-	return float64(C.cblas_dznrm2(C.int(N), unsafe.Pointer(&X[0]), C.int(incX)))
+	return float64(C.blasgo_dznrm2(C.int(N), unsafe.Pointer(&X[0]), C.int(incX)))
 }
 
 //SSWAP swaps the Vectors.
