@@ -32,4 +32,12 @@ double dasum_(const int *N, const double *X, const int *incX);
 float scasum_(const int *N, const void *X, const int *incX);
 double dzasum_(const int *N, const void *X, const int *incX);
 
+//Scale functions
+void sscal_(const int *N, const float *alpha, float *X, const int *incX);
+void dscal_(const int *N, const double *alpha, double *X, const int *incX);
+void cscal_(const int *N, const void *alpha, void *X, const int *incX);
+void zscal_(const int *N, const void *alpha, void *X, const int *incX);
+void csscal_(const int *N, const float *alpha, void *X, const int *incX);
+void zdscal_(const int *N, const double *alpha, void *X, const int *incX);
+
 #endif

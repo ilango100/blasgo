@@ -174,3 +174,53 @@ double blasgo_dzasum(const int N, const void *X, const int incX)
     return cblas_dzasum(N, X, incX);
 #endif
 }
+
+//Scale functions
+void blasgo_sscal(const int N, const float alpha, float *X, const int incX)
+{
+#ifdef BLAS
+    return sscal_(&N, &alpha, X, &incX);
+#else
+    return cblas_sscal(N, alpha, X, incX);
+#endif
+}
+void blasgo_dscal(const int N, const double alpha, double *X, const int incX)
+{
+#ifdef BLAS
+    return dscal_(&N, &alpha, X, &incX);
+#else
+    return cblas_dscal(N, alpha, X, incX);
+#endif
+}
+void blasgo_cscal(const int N, const void *alpha, void *X, const int incX)
+{
+#ifdef BLAS
+    return cscal_(&N, &alpha, X, &incX);
+#else
+    return cblas_cscal(N, alpha, X, incX);
+#endif
+}
+void blasgo_zscal(const int N, const void *alpha, void *X, const int incX)
+{
+#ifdef BLAS
+    return zscal_(&N, &alpha, X, &incX);
+#else
+    return cblas_zscal(N, alpha, X, incX);
+#endif
+}
+void blasgo_csscal(const int N, const float alpha, void *X, const int incX)
+{
+#ifdef BLAS
+    return csscal_(&N, &alpha, X, &incX);
+#else
+    return cblas_csscal(N, alpha, X, incX);
+#endif
+}
+void blasgo_zdscal(const int N, const double alpha, void *X, const int incX)
+{
+#ifdef BLAS
+    return zdscal_(&N, &alpha, X, &incX);
+#else
+    return cblas_zdscal(N, alpha, X, incX);
+#endif
+}

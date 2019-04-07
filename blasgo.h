@@ -32,4 +32,12 @@ double blasgo_dasum(const int N, const double *X, const int incX);
 float blasgo_scasum(const int N, const void *X, const int incX);
 double blasgo_dzasum(const int N, const void *X, const int incX);
 
+//Scale functions
+void blasgo_sscal(const int N, const float alpha, float *X, const int incX);
+void blasgo_dscal(const int N, const double alpha, double *X, const int incX);
+void blasgo_cscal(const int N, const void *alpha, void *X, const int incX);
+void blasgo_zscal(const int N, const void *alpha, void *X, const int incX);
+void blasgo_csscal(const int N, const float alpha, void *X, const int incX);
+void blasgo_zdscal(const int N, const double alpha, void *X, const int incX);
+
 #endif
