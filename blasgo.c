@@ -4,6 +4,8 @@
 #include "cblas.h"
 #endif
 
+#include <complex.h>
+
 //Level 1
 //Max functions
 int blasgo_isamax(const int N, const float *X, const int incX)
@@ -195,7 +197,7 @@ void blasgo_dscal(const int N, const double alpha, double *X, const int incX)
 void blasgo_cscal(const int N, const void *alpha, void *X, const int incX)
 {
 #ifdef BLAS
-    return cscal_(&N, &alpha, X, &incX);
+    return cscal_(&N, alpha, X, &incX);
 #else
     return cblas_cscal(N, alpha, X, incX);
 #endif
@@ -203,7 +205,7 @@ void blasgo_cscal(const int N, const void *alpha, void *X, const int incX)
 void blasgo_zscal(const int N, const void *alpha, void *X, const int incX)
 {
 #ifdef BLAS
-    return zscal_(&N, &alpha, X, &incX);
+    return zscal_(&N, alpha, X, &incX);
 #else
     return cblas_zscal(N, alpha, X, incX);
 #endif
@@ -258,40 +260,44 @@ float blasgo_sdsdot(const int N, const float alpha, const float *X, const int in
     return cblas_sdsdot(N, alpha, X, incX, Y, incY);
 #endif
 }
-void blasgo_cdotu_sub(const int N, const void *X, const int incX, const void *Y, const int incY, void *dotu)
+float complex blasgo_cdotu(const int N, const void *X, const int incX, const void *Y, const int incY)
 {
 #ifdef BLAS
-    dotu = cdotu_(&N, X, &incX, Y, &incY);
-    return;
+    return cdotu_(&N, X, &incX, Y, &incY);
 #else
-    return cblas_cdotu_sub(N, X, incX, Y, incY, dotu);
+    float complex ret;
+    cblas_cdotu_sub(N, X, incX, Y, incY, &ret);
+    return ret;
 #endif
 }
-void blasgo_cdotc_sub(const int N, const void *X, const int incX, const void *Y, const int incY, void *dotc)
+float complex blasgo_cdotc(const int N, const void *X, const int incX, const void *Y, const int incY)
 {
 #ifdef BLAS
-    dotc = cdotc_(&N, X, &incX, Y, &incY);
-    return;
+    return cdotc_(&N, X, &incX, Y, &incY);
 #else
-    return cblas_cdotc_sub(N, X, incX, Y, incY, dotc);
+    float complex ret;
+    cblas_cdotc_sub(N, X, incX, Y, incY, &ret);
+    return ret;
 #endif
 }
-void blasgo_zdotu_sub(const int N, const void *X, const int incX, const void *Y, const int incY, void *dotu)
+double complex blasgo_zdotu(const int N, const void *X, const int incX, const void *Y, const int incY)
 {
 #ifdef BLAS
-    dotu = zdotu_(&N, X, &incX, Y, &incY);
-    return;
+    return zdotu_(&N, X, &incX, Y, &incY);
 #else
-    return cblas_zdotu_sub(N, X, incX, Y, incY, dotu);
+    double complex ret;
+    cblas_zdotu_sub(N, X, incX, Y, incY, &ret);
+    return ret;
 #endif
 }
-void blasgo_zdotc_sub(const int N, const void *X, const int incX, const void *Y, const int incY, void *dotc)
+double complex blasgo_zdotc(const int N, const void *X, const int incX, const void *Y, const int incY)
 {
 #ifdef BLAS
-    dotc = zdotc_(&N, X, &incX, Y, &incY);
-    return;
+    return zdotc_(&N, X, &incX, Y, &incY);
 #else
-    return cblas_zdotc_sub(N, X, incX, Y, incY, dotc);
+    double complex ret;
+    cblas_zdotc_sub(N, X, incX, Y, incY, &ret);
+    return ret;
 #endif
 }
 
@@ -315,7 +321,7 @@ void blasgo_daxpy(const int N, const double alpha, const double *X, const int in
 void blasgo_caxpy(const int N, const void *alpha, const void *X, const int incX, void *Y, const int incY)
 {
 #ifdef BLAS
-    return caxpy_(&N, &alpha, X, &incX, Y, &incY);
+    return caxpy_(&N, alpha, X, &incX, Y, &incY);
 #else
     return cblas_caxpy(N, alpha, X, incX, Y, incY);
 #endif
@@ -323,7 +329,7 @@ void blasgo_caxpy(const int N, const void *alpha, const void *X, const int incX,
 void blasgo_zaxpy(const int N, const void *alpha, const void *X, const int incX, void *Y, const int incY)
 {
 #ifdef BLAS
-    return zaxpy_(&N, &alpha, X, &incX, Y, &incY);
+    return zaxpy_(&N, alpha, X, &incX, Y, &incY);
 #else
     return cblas_zaxpy(N, alpha, X, incX, Y, incY);
 #endif

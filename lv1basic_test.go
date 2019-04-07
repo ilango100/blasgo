@@ -1,6 +1,7 @@
 package blasgo
 
 import (
+	"math"
 	"testing"
 )
 
@@ -80,7 +81,7 @@ func TestIZAMAX(t *testing.T) {
 func TestSNRM2(t *testing.T) {
 	nrm := SNRM2(n, a, 1)
 	t.Logf("Norm of %v is %f", a, nrm)
-	if nrm != norm {
+	if math.Abs(float64(nrm-norm)) > errprecision {
 		t.Errorf("Norm wanted %.15f, got: %.15f", norm, nrm)
 	}
 }
@@ -88,7 +89,7 @@ func TestSNRM2(t *testing.T) {
 func TestDNRM2(t *testing.T) {
 	nrm := DNRM2(n, aa, 1)
 	t.Logf("Norm of %v is %f", a, nrm)
-	if nrm != norm {
+	if math.Abs(nrm-norm) > errprecision {
 		t.Errorf("Norm wanted %.20f, got: %.20f", norm, nrm)
 	}
 }
@@ -96,14 +97,14 @@ func TestDNRM2(t *testing.T) {
 func TestSCNRM2(t *testing.T) {
 	nrm := SCNRM2(cn, c, 1)
 	t.Logf("Norm of %v is %f.", c, nrm)
-	if nrm != norm {
+	if math.Abs(float64(nrm-norm)) > errprecision {
 		t.Errorf("Norm wanted %.15f, got: %.15f", norm, nrm)
 	}
 }
 func TestDZNRM2(t *testing.T) {
 	nrm := DZNRM2(cn, cc, 1)
 	t.Logf("Norm of %v is %f.", cc, nrm)
-	if nrm != norm {
+	if math.Abs(nrm-norm) > errprecision {
 		t.Errorf("Norm wanted %.20f, got: %.20f", norm, nrm)
 	}
 }

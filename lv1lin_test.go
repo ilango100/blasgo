@@ -140,7 +140,7 @@ func TestSDSDOT(t *testing.T) {
 func TestCDOTU(t *testing.T) {
 	dt := CDOTU(cn, c, 1, d, 1)
 	if dt != cddt {
-		t.Errorf("")
+		t.Errorf("Expected dot product %v, got %v", cddt, dt)
 	}
 	t.Logf("Dot product of %v and %v is %v", c, d, dt)
 }
@@ -148,7 +148,7 @@ func TestCDOTU(t *testing.T) {
 func TestCDOTC(t *testing.T) {
 	dt := CDOTC(cn, c, 1, d, 1)
 	if dt != cddtc {
-		t.Errorf("")
+		t.Errorf("Expected dot product %v, got %v", cddtc, dt)
 	}
 	t.Logf("Dot product of %v and conj of %v is %v", c, d, dt)
 }
@@ -156,7 +156,7 @@ func TestCDOTC(t *testing.T) {
 func TestZDOTU(t *testing.T) {
 	dt := ZDOTU(cn, cc, 1, dd, 1)
 	if dt != cddt {
-		t.Errorf("")
+		t.Errorf("Expected dot product %v, got %v", cddt, dt)
 	}
 	t.Logf("Dot product of %v and %v is %v", cc, dd, dt)
 }
@@ -164,7 +164,7 @@ func TestZDOTU(t *testing.T) {
 func TestZDOTC(t *testing.T) {
 	dt := ZDOTC(cn, cc, 1, dd, 1)
 	if dt != cddtc {
-		t.Errorf("")
+		t.Errorf("Expected dot product %v, got %v", cddtc, dt)
 	}
 	t.Logf("Dot product of %v and conj of %v is %v", cc, dd, dt)
 }

@@ -1,6 +1,8 @@
 #ifndef BLAS_H
 #define BLAS_H
 
+#include <complex.h>
+
 //Level 1
 //Max functions
 int isamax_(const int *N, const float *X, const int *incX);
@@ -45,10 +47,10 @@ float sdot_(const int *N, const float *X, const int *incX, const float *Y, const
 double ddot_(const int *N, const double *X, const int *incX, const double *Y, const int *incY);
 double dsdot_(const int *N, const float *X, const int *incX, const float *Y, const int *incY);
 float sdsdot_(const int *N, const float *alpha, const float *X, const int *incX, const float *Y, const int *incY);
-void *cdotu_(const int *N, const void *X, const int *incX, const void *Y, const int *incY);
-void *cdotc_(const int *N, const void *X, const int *incX, const void *Y, const int *incY);
-void *zdotu_(const int *N, const void *X, const int *incX, const void *Y, const int *incY);
-void *zdotc_(const int *N, const void *X, const int *incX, const void *Y, const int *incY);
+float complex cdotu_(const int *N, const void *X, const int *incX, const void *Y, const int *incY);
+float complex cdotc_(const int *N, const void *X, const int *incX, const void *Y, const int *incY);
+double complex zdotu_(const int *N, const void *X, const int *incX, const void *Y, const int *incY);
+double complex zdotc_(const int *N, const void *X, const int *incX, const void *Y, const int *incY);
 
 //Axpy functions
 void saxpy_(const int *N, const float *alpha, const float *X, const int *incX, float *Y, const int *incY);
