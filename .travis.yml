@@ -1,0 +1,12 @@
+language: go
+go:
+ - "1.12.3"
+ - "1.11.8"
+
+env:
+ - CGO_LDFLAGS="-lopenblas"
+ - CGO_LDFLAGS="-lopenblas" CGO_CFLAGS="-DBLAS"
+
+before_install:
+ - sudo apt update
+ - sudo apt install libopenblas-dev
