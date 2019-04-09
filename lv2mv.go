@@ -2,6 +2,7 @@ package blasgo
 
 /*
 #include "cblas.h"
+#include "blasgo.h"
 */
 import "C"
 import (
@@ -29,12 +30,12 @@ const (
 
 //SGEMV multiplies matrix with vector
 func SGEMV(order Order, transA Transpose, m, n int, alpha float32, A []float32, lda int, X []float32, incX int, beta float32, Y []float32, incY int) {
-	C.cblas_sgemv(C.enum_CBLAS_ORDER(order), C.enum_CBLAS_TRANSPOSE(transA), C.int(m), C.int(n), C.float(alpha), (*C.float)(&A[0]), C.int(lda), (*C.float)(&X[0]), C.int(incX), C.float(beta), (*C.float)(&Y[0]), C.int(incY))
+	C.blasgo_sgemv(C.enum_CBLAS_ORDER(order), C.enum_CBLAS_TRANSPOSE(transA), C.int(m), C.int(n), C.float(alpha), (*C.float)(&A[0]), C.int(lda), (*C.float)(&X[0]), C.int(incX), C.float(beta), (*C.float)(&Y[0]), C.int(incY))
 }
 
 //DGEMV multiplies matrix with vector
 func DGEMV(order Order, transA Transpose, m, n int, alpha float64, A []float64, lda int, X []float64, incX int, beta float64, Y []float64, incY int) {
-	C.cblas_dgemv(C.enum_CBLAS_ORDER(order), C.enum_CBLAS_TRANSPOSE(transA), C.int(m), C.int(n), C.double(alpha), (*C.double)(&A[0]), C.int(lda), (*C.double)(&X[0]), C.int(incX), C.double(beta), (*C.double)(&Y[0]), C.int(incY))
+	C.blasgo_dgemv(C.enum_CBLAS_ORDER(order), C.enum_CBLAS_TRANSPOSE(transA), C.int(m), C.int(n), C.double(alpha), (*C.double)(&A[0]), C.int(lda), (*C.double)(&X[0]), C.int(incX), C.double(beta), (*C.double)(&Y[0]), C.int(incY))
 }
 
 //CGEMV multiplies matrix with vector

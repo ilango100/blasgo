@@ -65,4 +65,8 @@ void daxpy_(const int *N, const double *alpha, const double *X, const int *incX,
 void caxpy_(const int *N, const void *alpha, const void *X, const int *incX, void *Y, const int *incY);
 void zaxpy_(const int *N, const void *alpha, const void *X, const int *incX, void *Y, const int *incY);
 
+//Level2 Gemv functions
+void sgemv_(const char *TransA, const int *M, const int *N, const float *alpha, const float *A, const int *lda, const float *X, const int *incX, const float *beta, float *Y, const int *incY);
+void dgemv_(const char *TransA, const int *M, const int *N, const double *alpha, const double *A, const int *lda, const double *X, const int *incX, const double *beta, double *Y, const int *incY);
+
 #endif
