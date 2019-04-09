@@ -1,7 +1,6 @@
 package blasgo
 
 /*
-#include "cblas.h"
 #include "blasgo.h"
 */
 import "C"
@@ -40,10 +39,10 @@ func DGEMV(order Order, transA Transpose, m, n int, alpha float64, A []float64, 
 
 //CGEMV multiplies matrix with vector
 func CGEMV(order Order, transA Transpose, m, n int, alpha complex64, A []complex64, lda int, X []complex64, incX int, beta complex64, Y []complex64, incY int) {
-	C.cblas_cgemv(C.enum_CBLAS_ORDER(order), C.enum_CBLAS_TRANSPOSE(transA), C.int(m), C.int(n), unsafe.Pointer(&alpha), unsafe.Pointer(&A[0]), C.int(lda), unsafe.Pointer(&X[0]), C.int(incX), unsafe.Pointer(&beta), unsafe.Pointer(&Y[0]), C.int(incY))
+	C.blasgo_cgemv(C.enum_CBLAS_ORDER(order), C.enum_CBLAS_TRANSPOSE(transA), C.int(m), C.int(n), unsafe.Pointer(&alpha), unsafe.Pointer(&A[0]), C.int(lda), unsafe.Pointer(&X[0]), C.int(incX), unsafe.Pointer(&beta), unsafe.Pointer(&Y[0]), C.int(incY))
 }
 
 //ZGEMV multiplies matrix with vector
 func ZGEMV(order Order, transA Transpose, m, n int, alpha complex128, A []complex128, lda int, X []complex128, incX int, beta complex128, Y []complex128, incY int) {
-	C.cblas_zgemv(C.enum_CBLAS_ORDER(order), C.enum_CBLAS_TRANSPOSE(transA), C.int(m), C.int(n), unsafe.Pointer(&alpha), unsafe.Pointer(&A[0]), C.int(lda), unsafe.Pointer(&X[0]), C.int(incX), unsafe.Pointer(&beta), unsafe.Pointer(&Y[0]), C.int(incY))
+	C.blasgo_zgemv(C.enum_CBLAS_ORDER(order), C.enum_CBLAS_TRANSPOSE(transA), C.int(m), C.int(n), unsafe.Pointer(&alpha), unsafe.Pointer(&A[0]), C.int(lda), unsafe.Pointer(&X[0]), C.int(incX), unsafe.Pointer(&beta), unsafe.Pointer(&Y[0]), C.int(incY))
 }

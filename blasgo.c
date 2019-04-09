@@ -235,11 +235,8 @@ void blasgo_sgemv(const enum CBLAS_ORDER order, const enum CBLAS_TRANSPOSE Trans
         if (TransA == CblasTrans || TransA == CblasConjTrans)
             trans = 'T';
     }
-    else
-    {
-        if (TransA == CblasNoTrans)
-            trans = 'T';
-    }
+    else if (TransA == CblasNoTrans)
+        trans = 'T';
     return sgemv_(&trans, &M, &N, &alpha, A, &lda, X, &incX, &beta, Y, &incY);
 }
 void blasgo_dgemv(const enum CBLAS_ORDER order, const enum CBLAS_TRANSPOSE TransA, const int M, const int N, const double alpha, const double *A, const int lda, const double *X, const int incX, const double beta, double *Y, const int incY)
@@ -250,20 +247,65 @@ void blasgo_dgemv(const enum CBLAS_ORDER order, const enum CBLAS_TRANSPOSE Trans
         if (TransA == CblasTrans || TransA == CblasConjTrans)
             trans = 'T';
     }
-    else
-    {
-        if (TransA == CblasNoTrans)
-            trans = 'T';
-    }
+    else if (TransA == CblasNoTrans)
+        trans = 'T';
     return dgemv_(&trans, &M, &N, &alpha, A, &lda, X, &incX, &beta, Y, &incY);
 }
 void blasgo_cgemv(const enum CBLAS_ORDER order, const enum CBLAS_TRANSPOSE TransA, const int M, const int N, const void *alpha, const void *A, const int lda, const void *X, const int incX, const void *beta, void *Y, const int incY)
 {
-    //TODO: Implement cgemv
+    char trans = 'N';
+    if (order == CblasColMajor)
+    {
+        if (TransA == CblasTrans)
+            trans = 'T';
+        else if (TransA == CblasConjTrans)
+            trans = 'C'
+    }
+    else
+    {
+        if (TransA == CblasNoTrans)
+            trans = 'T';
+        else if (TransA == CblasConjTrans)
+        {
+            float complex B[M * N];
+            for (int i = 0; i < M; i++)
+            {
+                for (int j = 0; j < N; j++)
+                    B[i * N + j] = (float complex)conj(A[i * lda + j]);
+            }
+            A = B;
+            return cgemv_(&trans, &M, &N, &alpha, A, &N, X, &incX, &beta, Y, &incY);
+        }
+    }
+    cgemv_(&trans, &M, &N, &alpha, A, &l, X, &incX, &beta, Y, &incY);
 }
 void blasgo_zgemv(const enum CBLAS_ORDER order, const enum CBLAS_TRANSPOSE TransA, const int M, const int N, const void *alpha, const void *A, const int lda, const void *X, const int incX, const void *beta, void *Y, const int incY)
 {
-    //TODO: Implement zgemv
+    char trans = 'N';
+    if (order == CblasColMajor)
+    {
+        if (TransA == CblasTrans)
+            trans = 'T';
+        else if (TransA == CblasConjTrans)
+            trans = 'C'
+    }
+    else
+    {
+        if (TransA == CblasNoTrans)
+            trans = 'T';
+        else if (TransA == CblasConjTrans)
+        {
+            double complex B[M * N];
+            for (int i = 0; i < M; i++)
+            {
+                for (int j = 0; j < N; j++)
+                    B[i * N + j] = (float complex)conj(A[i * lda + j]);
+            }
+            A = B;
+            return zgemv_(&trans, &M, &N, &alpha, A, &N, X, &incX, &beta, Y, &incY);
+        }
+    }
+    zgemv_(&trans, &M, &N, &alpha, A, &l, X, &incX, &beta, Y, &incY);
 }
 
 #else
