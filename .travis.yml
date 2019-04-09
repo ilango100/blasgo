@@ -9,4 +9,4 @@ env:
 
 before_install:
  - sudo apt update
- - sudo apt install libopenblas-dev
+ - sudo apt install libopenblas-dev -y

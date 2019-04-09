@@ -1,6 +1,7 @@
 # BLASGo
 
 [![GoDoc](https://godoc.org/github.com/ilango100/blasgo?status.svg)](https://godoc.org/github.com/ilango100/blasgo)
+[![Build Status](https://travis-ci.org/ilango100/blasgo.svg?branch=master)](https://travis-ci.org/ilango100/blasgo)
 
 BlasGo is a wrapper library providing [BLAS](http://www.netlib.org/blas/#_blas_routines) routines in Go. 
 
