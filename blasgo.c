@@ -140,19 +140,43 @@ float blasgo_sdsdot(const int N, const float alpha, const float *X, const int in
 }
 float complex blasgo_cdotu(const int N, const void *X, const int incX, const void *Y, const int incY)
 {
+#ifndef MKL
     return cdotu_(&N, X, &incX, Y, &incY);
+#else
+    complex float ret;
+    cdotu_(&ret, &N, X, &incX, Y, &incY);
+    return ret;
+#endif
 }
 float complex blasgo_cdotc(const int N, const void *X, const int incX, const void *Y, const int incY)
 {
+#ifndef MKL
     return cdotc_(&N, X, &incX, Y, &incY);
+#else
+    complex float ret;
+    cdotc_(&ret, &N, X, &incX, Y, &incY);
+    return ret;
+#endif
 }
 double complex blasgo_zdotu(const int N, const void *X, const int incX, const void *Y, const int incY)
 {
+#ifndef MKL
     return zdotu_(&N, X, &incX, Y, &incY);
+#else
+    complex double ret;
+    zdotu_(&ret, &N, X, &incX, Y, &incY);
+    return ret;
+#endif
 }
 double complex blasgo_zdotc(const int N, const void *X, const int incX, const void *Y, const int incY)
 {
+#ifndef MKL
     return zdotc_(&N, X, &incX, Y, &incY);
+#else
+    complex double ret;
+    zdotc_(&ret, &N, X, &incX, Y, &incY);
+    return ret;
+#endif
 }
 
 //Axpy functions
