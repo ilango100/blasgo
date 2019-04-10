@@ -259,7 +259,7 @@ void blasgo_cgemv(const enum CBLAS_ORDER order, const enum CBLAS_TRANSPOSE Trans
         if (TransA == CblasTrans)
             trans = 'T';
         else if (TransA == CblasConjTrans)
-            trans = 'C'
+            trans = 'C';
     }
     else
     {
@@ -268,16 +268,17 @@ void blasgo_cgemv(const enum CBLAS_ORDER order, const enum CBLAS_TRANSPOSE Trans
         else if (TransA == CblasConjTrans)
         {
             float complex B[M * N];
+            const float complex *c = A;
             for (int i = 0; i < M; i++)
             {
                 for (int j = 0; j < N; j++)
-                    B[i * N + j] = (float complex)conj(A[i * lda + j]);
+                    B[i * N + j] = conj(c[i * lda + j]);
             }
             A = B;
-            return cgemv_(&trans, &M, &N, &alpha, A, &N, X, &incX, &beta, Y, &incY);
+            return cgemv_(&trans, &M, &N, alpha, A, &N, X, &incX, beta, Y, &incY);
         }
     }
-    cgemv_(&trans, &M, &N, &alpha, A, &l, X, &incX, &beta, Y, &incY);
+    return cgemv_(&trans, &M, &N, alpha, A, &lda, X, &incX, beta, Y, &incY);
 }
 void blasgo_zgemv(const enum CBLAS_ORDER order, const enum CBLAS_TRANSPOSE TransA, const int M, const int N, const void *alpha, const void *A, const int lda, const void *X, const int incX, const void *beta, void *Y, const int incY)
 {
@@ -287,7 +288,7 @@ void blasgo_zgemv(const enum CBLAS_ORDER order, const enum CBLAS_TRANSPOSE Trans
         if (TransA == CblasTrans)
             trans = 'T';
         else if (TransA == CblasConjTrans)
-            trans = 'C'
+            trans = 'C';
     }
     else
     {
@@ -296,16 +297,17 @@ void blasgo_zgemv(const enum CBLAS_ORDER order, const enum CBLAS_TRANSPOSE Trans
         else if (TransA == CblasConjTrans)
         {
             double complex B[M * N];
+            const double complex *c = A;
             for (int i = 0; i < M; i++)
             {
                 for (int j = 0; j < N; j++)
-                    B[i * N + j] = (float complex)conj(A[i * lda + j]);
+                    B[i * N + j] = conj(c[i * lda + j]);
             }
             A = B;
-            return zgemv_(&trans, &M, &N, &alpha, A, &N, X, &incX, &beta, Y, &incY);
+            return zgemv_(&trans, &M, &N, alpha, A, &N, X, &incX, beta, Y, &incY);
         }
     }
-    zgemv_(&trans, &M, &N, &alpha, A, &l, X, &incX, &beta, Y, &incY);
+    return zgemv_(&trans, &M, &N, alpha, A, &lda, X, &incX, beta, Y, &incY);
 }
 
 #else
