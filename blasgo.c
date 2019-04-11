@@ -165,45 +165,37 @@ float blasgo_sdsdot(const int N, const float alpha, const float *X, const int in
 {
     return sdsdot_(&N, &alpha, X, &incX, Y, &incY);
 }
-float complex blasgo_cdotu(const int N, const void *X, const int incX, const void *Y, const int incY)
+void blasgo_cdotu(const int N, const void *X, const int incX, const void *Y, const int incY, void *dotu)
 {
 #ifndef MKL
-    return cdotu_(&N, X, &incX, Y, &incY);
+    *(float complex *)dotu = cdotu_(&N, X, &incX, Y, &incY);
 #else
     //MKL uses different signature
-    complex float ret;
-    cdotu_(&ret, &N, X, &incX, Y, &incY);
-    return ret;
+    return cdotu_(dotu, &N, X, &incX, Y, &incY);
 #endif
 }
-float complex blasgo_cdotc(const int N, const void *X, const int incX, const void *Y, const int incY)
+void blasgo_cdotc(const int N, const void *X, const int incX, const void *Y, const int incY, void *dotc)
 {
 #ifndef MKL
-    return cdotc_(&N, X, &incX, Y, &incY);
+    *(float complex *)dotc = cdotc_(&N, X, &incX, Y, &incY);
 #else
-    complex float ret;
-    cdotc_(&ret, &N, X, &incX, Y, &incY);
-    return ret;
+    return cdotc_(dotc, &N, X, &incX, Y, &incY);
 #endif
 }
-double complex blasgo_zdotu(const int N, const void *X, const int incX, const void *Y, const int incY)
+void blasgo_zdotu(const int N, const void *X, const int incX, const void *Y, const int incY, void *dotu)
 {
 #ifndef MKL
-    return zdotu_(&N, X, &incX, Y, &incY);
+    *(double complex *)dotu = zdotu_(&N, X, &incX, Y, &incY);
 #else
-    complex double ret;
-    zdotu_(&ret, &N, X, &incX, Y, &incY);
-    return ret;
+    return zdotu_(dotu, &N, X, &incX, Y, &incY);
 #endif
 }
-double complex blasgo_zdotc(const int N, const void *X, const int incX, const void *Y, const int incY)
+void blasgo_zdotc(const int N, const void *X, const int incX, const void *Y, const int incY, void *dotc)
 {
 #ifndef MKL
-    return zdotc_(&N, X, &incX, Y, &incY);
+    *(double complex *)dotc = zdotc_(&N, X, &incX, Y, &incY);
 #else
-    complex double ret;
-    zdotc_(&ret, &N, X, &incX, Y, &incY);
-    return ret;
+    return zdotc_(dotc, &N, X, &incX, Y, &incY);
 #endif
 }
 
@@ -448,29 +440,21 @@ float blasgo_sdsdot(const int N, const float alpha, const float *X, const int in
 {
     return cblas_sdsdot(N, alpha, X, incX, Y, incY);
 }
-float complex blasgo_cdotu(const int N, const void *X, const int incX, const void *Y, const int incY)
+void blasgo_cdotu(const int N, const void *X, const int incX, const void *Y, const int incY, void *dotu)
 {
-    float complex ret;
-    cblas_cdotu_sub(N, X, incX, Y, incY, &ret);
-    return ret;
+    return cblas_cdotu_sub(N, X, incX, Y, incY, dotu);
 }
-float complex blasgo_cdotc(const int N, const void *X, const int incX, const void *Y, const int incY)
+void blasgo_cdotc(const int N, const void *X, const int incX, const void *Y, const int incY, void *dotc)
 {
-    float complex ret;
-    cblas_cdotc_sub(N, X, incX, Y, incY, &ret);
-    return ret;
+    return cblas_cdotc_sub(N, X, incX, Y, incY, dotc);
 }
-double complex blasgo_zdotu(const int N, const void *X, const int incX, const void *Y, const int incY)
+void blasgo_zdotu(const int N, const void *X, const int incX, const void *Y, const int incY, void *dotu)
 {
-    double complex ret;
-    cblas_zdotu_sub(N, X, incX, Y, incY, &ret);
-    return ret;
+    return cblas_zdotu_sub(N, X, incX, Y, incY, dotu);
 }
-double complex blasgo_zdotc(const int N, const void *X, const int incX, const void *Y, const int incY)
+void blasgo_zdotc(const int N, const void *X, const int incX, const void *Y, const int incY, void *dotc)
 {
-    double complex ret;
-    cblas_zdotc_sub(N, X, incX, Y, incY, &ret);
-    return ret;
+    return cblas_zdotc_sub(N, X, incX, Y, incY, dotc);
 }
 
 //Axpy functions
