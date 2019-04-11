@@ -65,10 +65,19 @@ void daxpy_(const int *N, const double *alpha, const double *X, const int *incX,
 void caxpy_(const int *N, const void *alpha, const void *X, const int *incX, void *Y, const int *incY);
 void zaxpy_(const int *N, const void *alpha, const void *X, const int *incX, void *Y, const int *incY);
 
-//Level2 Gemv functions
+//Level2
+//Gemv functions
 void sgemv_(const char *TransA, const int *M, const int *N, const float *alpha, const float *A, const int *lda, const float *X, const int *incX, const float *beta, float *Y, const int *incY);
 void dgemv_(const char *TransA, const int *M, const int *N, const double *alpha, const double *A, const int *lda, const double *X, const int *incX, const double *beta, double *Y, const int *incY);
 void cgemv_(const char *TransA, const int *M, const int *N, const void *alpha, const void *A, const int *lda, const void *X, const int *incX, const void *beta, void *Y, const int *incY);
 void zgemv_(const char *TransA, const int *M, const int *N, const void *alpha, const void *A, const int *lda, const void *X, const int *incX, const void *beta, void *Y, const int *incY);
+
+//Ger functions
+void sger_(const int *M, const int *N, const float *alpha, const float *X, const int *incX, const float *Y, const int *incY, float *A, const int *lda);
+void dger_(const int *M, const int *N, const double *alpha, const double *X, const int *incX, const double *Y, const int *incY, double *A, const int *lda);
+void cgeru_(const int *M, const int *N, const void *alpha, const void *X, const int *incX, const void *Y, const int *incY, void *A, const int *lda);
+void cgerc_(const int *M, const int *N, const void *alpha, const void *X, const int *incX, const void *Y, const int *incY, void *A, const int *lda);
+void zgeru_(const int *M, const int *N, const void *alpha, const void *X, const int *incX, const void *Y, const int *incY, void *A, const int *lda);
+void zgerc_(const int *M, const int *N, const void *alpha, const void *X, const int *incX, const void *Y, const int *incY, void *A, const int *lda);
 
 #endif

@@ -275,4 +275,38 @@ void cblas_zgemv(const enum CBLAS_ORDER order, const enum CBLAS_TRANSPOSE TransA
     return zgemv_(&trans, &M, &N, alpha, A, &lda, X, &incX, beta, Y, &incY);
 }
 
+//Ger functions
+void cblas_sger(const enum CBLAS_ORDER order, const int M, const int N, const float alpha, const float *X, const int incX, const float *Y, const int incY, float *A, const int lda)
+{
+    if (order == CblasRowMajor)
+    {
+        return sger_(&N, &M, &alpha, Y, &incY, X, &incX, A, &lda);
+    }
+    return sger_(&M, &N, &alpha, X, &incX, Y, &incY, A, &lda);
+}
+void cblas_dger(const enum CBLAS_ORDER order, const int M, const int N, const double alpha, const double *X, const int incX, const double *Y, const int incY, double *A, const int lda)
+{
+    if (order == CblasRowMajor)
+    {
+        return dger_(&N, &M, &alpha, Y, &incY, X, &incX, A, &lda);
+    }
+    return dger_(&M, &N, &alpha, X, &incX, Y, &incY, A, &lda);
+}
+void cblas_cgeru(const enum CBLAS_ORDER order, const int M, const int N, const void *alpha, const void *X, const int incX, const void *Y, const int incY, void *A, const int lda)
+{
+    if (order == CblasRowMajor)
+    {
+        return cgeru_(&N, &M, alpha, Y, &incY, X, &incX, A, &lda);
+    }
+    return cgeru_(&M, &N, &alpha, X, &incX, Y, &incY, A, &lda);
+}
+void cblas_zgeru(const enum CBLAS_ORDER order, const int M, const int N, const void *alpha, const void *X, const int incX, const void *Y, const int incY, void *A, const int lda)
+{
+    if (order == CblasRowMajor)
+    {
+        return zgeru_(&N, &M, alpha, Y, &incY, X, &incX, A, &lda);
+    }
+    return zgeru_(&M, &N, &alpha, X, &incX, Y, &incY, A, &lda);
+}
+
 #endif
