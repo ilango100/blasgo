@@ -5,7 +5,7 @@ import (
 )
 
 const (
-	errprecision = 0.0001
+	errprecision = 0.001
 )
 
 func compareSlices32(a, b []float32) bool {
