@@ -309,4 +309,63 @@ void cblas_zgeru(const enum CBLAS_ORDER order, const int M, const int N, const v
     return zgeru_(&M, &N, &alpha, X, &incX, Y, &incY, A, &lda);
 }
 
+//Level3
+//Gemm functions
+void cblas_sgemm(const enum CBLAS_ORDER order, const enum CBLAS_TRANSPOSE TransA, const enum CBLAS_TRANSPOSE TransB, const int M, const int N, const int K, const float alpha, const float *A, const int lda, const float *B, const int ldb, const float beta, float *C, const int ldc)
+{
+    char transA = 'N';
+    if (TransA == CblasTrans || TransA == CblasConjTrans)
+        transA = 'T';
+    char transB = 'N';
+    if (TransB == CblasTrans || TransB == CblasConjTrans)
+        transB = 'T';
+    if (order == CblasRowMajor)
+        return sgemm_(&transB, &transA, &N, &M, &K, &alpha, B, &ldb, A, &lda, &beta, C, &ldc);
+    return sgemm_(&transA, &transB, &M, &N, &K, &alpha, A, &lda, B, &ldb, &beta, C, &ldc);
+}
+void cblas_dgemm(const enum CBLAS_ORDER order, const enum CBLAS_TRANSPOSE TransA, const enum CBLAS_TRANSPOSE TransB, const int M, const int N, const int K, const double alpha, const double *A, const int lda, const double *B, const int ldb, const double beta, double *C, const int ldc)
+{
+    char transA = 'N';
+    if (TransA == CblasTrans || TransA == CblasConjTrans)
+        transA = 'T';
+    char transB = 'N';
+    if (TransB == CblasTrans || TransB == CblasConjTrans)
+        transB = 'T';
+    if (order == CblasRowMajor)
+        return dgemm_(&transB, &transA, &N, &M, &K, &alpha, B, &ldb, A, &lda, &beta, C, &ldc);
+    return dgemm_(&transA, &transB, &M, &N, &K, &alpha, A, &lda, B, &ldb, &beta, C, &ldc);
+}
+void cblas_cgemm(const enum CBLAS_ORDER order, const enum CBLAS_TRANSPOSE TransA, const enum CBLAS_TRANSPOSE TransB, const int M, const int N, const int K, const void *alpha, const void *A, const int lda, const void *B, const int ldb, const void *beta, void *C, const int ldc)
+{
+    char transA = 'N';
+    if (TransA == CblasTrans)
+        transA = 'T';
+    else if (TransA == CblasConjTrans)
+        transA = 'C';
+    char transB = 'N';
+    if (TransB == CblasTrans)
+        transB = 'T';
+    else if (TransB == CblasConjTrans)
+        transB = 'C';
+    if (order == CblasRowMajor)
+        return cgemm_(&transB, &transA, &N, &M, &K, alpha, B, &ldb, A, &lda, beta, C, &ldc);
+    return cgemm_(&transA, &transB, &M, &N, &K, alpha, A, &lda, B, &ldb, beta, C, &ldc);
+}
+void cblas_zgemm(const enum CBLAS_ORDER order, const enum CBLAS_TRANSPOSE TransA, const enum CBLAS_TRANSPOSE TransB, const int M, const int N, const int K, const void *alpha, const void *A, const int lda, const void *B, const int ldb, const void *beta, void *C, const int ldc)
+{
+    char transA = 'N';
+    if (TransA == CblasTrans)
+        transA = 'T';
+    else if (TransA == CblasConjTrans)
+        transA = 'C';
+    char transB = 'N';
+    if (TransB == CblasTrans)
+        transB = 'T';
+    else if (TransB == CblasConjTrans)
+        transB = 'C';
+    if (order == CblasRowMajor)
+        return zgemm_(&transB, &transA, &N, &M, &K, alpha, B, &ldb, A, &lda, beta, C, &ldc);
+    return zgemm_(&transA, &transB, &M, &N, &K, alpha, A, &lda, B, &ldb, beta, C, &ldc);
+}
+
 #endif

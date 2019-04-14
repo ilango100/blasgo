@@ -80,4 +80,11 @@ void cgerc_(const int *M, const int *N, const void *alpha, const void *X, const 
 void zgeru_(const int *M, const int *N, const void *alpha, const void *X, const int *incX, const void *Y, const int *incY, void *A, const int *lda);
 void zgerc_(const int *M, const int *N, const void *alpha, const void *X, const int *incX, const void *Y, const int *incY, void *A, const int *lda);
 
+//Level3
+//Gemm functions
+void sgemm_(const char *TA, const char *TB, const int *M, const int *N, const int *K, const float *alpha, const float *A, const int *lda, const float *B, const int *ldb, const float *beta, float *C, const int *ldc);
+void dgemm_(const char *TA, const char *TB, const int *M, const int *N, const int *K, const double *alpha, const double *A, const int *lda, const double *B, const int *ldb, const double *beta, double *C, const int *ldc);
+void cgemm_(const char *TA, const char *TB, const int *M, const int *N, const int *K, const void *alpha, const void *A, const int *lda, const void *B, const int *ldb, const void *beta, void *C, const int *ldc);
+void zgemm_(const char *TA, const char *TB, const int *M, const int *N, const int *K, const void *alpha, const void *A, const int *lda, const void *B, const int *ldb, const void *beta, void *C, const int *ldc);
+
 #endif
