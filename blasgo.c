@@ -308,6 +308,36 @@ void cblas_zgeru(const enum CBLAS_ORDER order, const int M, const int N, const v
     }
     return zgeru_(&M, &N, &alpha, X, &incX, Y, &incY, A, &lda);
 }
+void cblas_cgerc(const enum CBLAS_ORDER order, const int M, const int N, const void *alpha, const void *X, const int incX, const void *Y, const int incY, void *A, const int lda)
+{
+    if (order == CblasRowMajor)
+    {
+        complex float Z[N];
+        complex float *c = Y;
+        for (int i = 0; i < N; i++)
+        {
+            Z[i] = conj(c[i * incY]);
+        }
+        int incZ = 1;
+        return cgeru_(&N, &M, alpha, Z, &incZ, X, &incX, A, &lda);
+    }
+    return cgerc_(&M, &N, &alpha, X, &incX, Y, &incY, A, &lda);
+}
+void cblas_zgerc(const enum CBLAS_ORDER order, const int M, const int N, const void *alpha, const void *X, const int incX, const void *Y, const int incY, void *A, const int lda)
+{
+    if (order == CblasRowMajor)
+    {
+        complex double Z[N];
+        complex double *c = Y;
+        for (int i = 0; i < N; i++)
+        {
+            Z[i] = conj(c[i * incY]);
+        }
+        int incZ = 1;
+        return zgeru_(&N, &M, alpha, Z, &incZ, X, &incX, A, &lda);
+    }
+    return zgerc_(&M, &N, &alpha, X, &incX, Y, &incY, A, &lda);
+}
 
 //Level3
 //Gemm functions
