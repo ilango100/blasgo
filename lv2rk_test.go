@@ -41,9 +41,9 @@ func TestDGER(t *testing.T) {
 		120.0, 108.0, 96.0, 84.0, 72.0, 60.0, 48.0, 36.0, 24.0, 12.0,
 	}
 	if !compareSlices64(mat, res) {
-		t.Errorf("SGER: Expected %v, got %v", res, mat)
+		t.Errorf("DGER: Expected %v, got %v", res, mat)
 	}
-	t.Logf("SGER Result: %v", mat)
+	t.Logf("DGER Result: %v", mat)
 }
 
 func TestCGERU(t *testing.T) {
@@ -98,9 +98,9 @@ func TestCGERC(t *testing.T) {
 		53.2 + 57.1i,
 	}
 	if !compareSlicesC64(mat, res) {
-		t.Errorf("CGERU: Expected %v, got %v", res, mat)
+		t.Errorf("CGERC: Expected %v, got %v", res, mat)
 	}
-	t.Logf("CGERU Result: %v", mat)
+	t.Logf("CGERC Result: %v", mat)
 }
 
 func TestZGERC(t *testing.T) {
@@ -117,7 +117,7 @@ func TestZGERC(t *testing.T) {
 		53.2 + 57.1i,
 	}
 	if !compareSlicesC128(mat, res) {
-		t.Errorf("ZGERU: Expected %v, got %v", res, mat)
+		t.Errorf("ZGERC: Expected %v, got %v", res, mat)
 	}
-	t.Logf("ZGERU Result: %v", mat)
+	t.Logf("ZGERC Result: %v", mat)
 }
